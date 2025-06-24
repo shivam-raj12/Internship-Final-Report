@@ -1,4 +1,4 @@
-from sympy.combinatorics import *
+from sympy.combinatorics import AlternatingGroup, SymmetricGroup
 
 def stabilizer(group, element):
     print(f"Stabilizer({element + 1}): ")
@@ -7,15 +7,8 @@ def stabilizer(group, element):
             print("e")
         else:
             for permutation in x.cyclic_form:
-                print(f"({','.join(str(permutation_element + 1) for permutation_element in permutation)})", end = "")
+                print(f"({', '.join(str(permutation_element + 1) for permutation_element in permutation)})", end = "")
             print()
-
-
-def generator(group):
-    print(f"\nGenerator are: ")
-    for x in group.generators:
-        for y in x.cyclic_form:
-            print(f"({', '.join(str(i+1) for i in y)})")
 
 
 def main():
@@ -26,8 +19,7 @@ def main():
         print(f"Element must be within {[x for x in range(1, size + 1)]}")
         return
 
-    stabilizer(AlternatingGroup(size), element - 1)
-    generator(AlternatingGroup(size))
+    stabilizer(SymmetricGroup(size), element - 1)
 
 if __name__ == "__main__":
     main()

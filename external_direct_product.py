@@ -16,6 +16,7 @@ def Us_elements():
             elements.append(x)
     print(elements)
 
+
 def ex2():
     print("This software computes the elements of the subgroup U(n)^k={x^k|x∈U(n)} of U(n) and its order. ")
     n = int(input("Value of n: "))
