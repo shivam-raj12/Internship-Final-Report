@@ -2,7 +2,9 @@ from math import factorial, prod
 from collections import Counter
 from tabulate2 import tabulate
 
-
+'''
+This program returns the list of possible cycles of the Symmetric group S_n.
+'''
 def find_unique_additive_lists(n):
     unique = set()
     result = []
@@ -25,6 +27,10 @@ def find_unique_additive_lists(n):
     return result
 
 
+
+'''
+Counts the number of cycles in the given permutation of the symmetric group S_n.
+'''
 def element_counter(n, cycle):
     if len(cycle) == 1:
         order = factorial(n)
@@ -41,7 +47,7 @@ def element_counter(n, cycle):
 def main():
     size = int(input("Enter the size of the set: "))
 
-    data = [["1", 1]]  # Initializing 1 cycle element which is e only.
+    data = [["1", 1]]  # Initializing 1 cycle element which is `e` only.
 
     total_possible_cycles = find_unique_additive_lists(size)
 
