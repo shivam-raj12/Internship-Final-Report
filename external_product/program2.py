@@ -9,6 +9,7 @@ def program2():
         if gcd(x, n) == 1:
             elements.add(pow(x, k, n))
     print(sorted(elements))
+    print(f"Order: {len(elements)}")
 
 
 def main():
