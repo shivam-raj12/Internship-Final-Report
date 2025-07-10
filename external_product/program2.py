@@ -1,5 +1,8 @@
 from math import gcd
 
+'''
+This software computes the elements of the subgroup U(n)^k = {x^k | x in U(n)} of U(n) and its order.
+'''
 def program2():
     n = int(input("Value of n: "))
     k = int(input("Value of k: "))

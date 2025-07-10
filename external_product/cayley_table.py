@@ -1,5 +1,9 @@
 from tabulate2 import tabulate
 
+
+'''
+This program prints the cayley table of Z_m x Z_n group.
+'''
 def cayley_table(m, n):
     elements = [[x, y] for x in range(0, m) for y in range(0, n)]
 

@@ -1,14 +1,9 @@
-from math import gcd
+from U_n_Group.U_n_Size import get_coprime_size
 
 
-def get_coprime_size(size):
-    count = 0
-    for i in range(1, size):
-        if gcd(i, size) == 1:
-            count += 1
-    return count
-
-
+'''
+This function returns the order of the group Aut(D_n)
+'''
 def get_size_of_aut(size):
     return size * get_coprime_size(size)
 

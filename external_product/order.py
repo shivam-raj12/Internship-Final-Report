@@ -14,12 +14,17 @@ def main():
 
     elements = [[x,y] for x in range(0, m) for y in range(0, n)]
 
+    is_cyclic = False
     data = []
     for e in elements:
         order = find_order(m, n, e[0], e[1])
+        if order == m*n:
+            is_cyclic = True
         data.append([f"{e[0]}x{e[1]}", order])
 
     print(tabulate(data, ["Element", "Order"], tablefmt = "fancy_grid"))
+
+    print(f"Z_{m} x Z_{n} group is ", end = "cyclic." if is_cyclic else "not cyclic.")
 
 if __name__ == "__main__":
     main()

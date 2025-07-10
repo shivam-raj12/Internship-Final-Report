@@ -1,6 +1,8 @@
 from math import gcd
 
-
+'''
+This software lists the elements of U_s(st), where s and t are relatively prime.
+'''
 def program1():
     s = int(input("Value of s: "))
     t = int(input("Value of t: "))
