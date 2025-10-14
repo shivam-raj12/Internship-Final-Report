@@ -33,7 +33,7 @@ Created as part of an internship aimed at exploring algebraic structures computa
 - **Program:** Indian Academy of Sciences – Summer Research Fellowship Program (SRFP)
 - **Duration:** 10 May 2025 to 10 July 2025 (60 Days)
 - **Guide:** Krishna Hanumanthu 
-- **Institution:** Chennai Mathematical Institute(CMI), Chennai, Tamil Nadu.
+- **Institution:** Chennai Mathematical Institute (CMI), Chennai, Tamil Nadu.
 - **Organised by:**
   - Indian Academy of Sciences (IAS), Bengaluru, Karnataka 
   - Indian National Science Academy (INSA), New Delhi, Delhi 
