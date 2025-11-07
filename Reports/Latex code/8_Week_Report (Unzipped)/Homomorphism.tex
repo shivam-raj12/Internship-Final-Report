@@ -1,0 +1,147 @@
+\newtheorem{subsection_def}{Definition}[subsection]
+\newtheorem{subsection_theorem}{Theorem}[subsection]
+\newtheorem{subsection_example}{Example}[subsection]
+
+\setlength{\parskip}{1em}
+
+\section{Homomorphisms of Groups}
+\subsection{Homomorphisms}
+
+\begin{subsection_def}
+    Let $(G, *)$ and $(H, \circ)$ be two groups, and let $f$ be a function from $G$ to $H$. Then $f$ is called a \textbf{homomorphism} of $G$ into $H$ if $\forall\ a,b \in G$,
+    $$f(a * b)=f(a) \circ f(b).$$
+\end{subsection_def}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{homomorphism.png}
+    \caption{Homomorphism diagram illustrating a group homomorphism $f: G \to H$.}
+\end{figure}
+
+\begin{subsection_example}
+    Let $G=(\mathbb{Z}, +)$ and $H=(\{1,-1\},\cdot )$.
+
+    Define $f\ :\ \mathbb{Z} \to \{1, -1\}$
+    $$
+        f(n) = \begin{cases}
+            \ 1 & \text{if }n \text{ is even} \\
+            -1 & \text{if } n \text{ is odd}
+        \end{cases}
+    $$
+
+    Here $f$ is a homomorphism from $G$ to $H$.
+    
+\end{subsection_example}
+
+\begin{subsection_def} 
+ Let $\phi: A \to B$ be a homomorphism between two groups $A$ and $B$.
+
+ The \textbf{image of $\phi$} denoted by $\operatorname{Im}\phi$ is defined as: $$\operatorname{Im}\phi = \{\phi(a)\mid a\in A\} \subseteq B$$
+\end{subsection_def}
+
+\begin{subsection_def} 
+ Let $\phi: A \to B$ be a homomorphism between two groups $A$ and $B$.
+
+ The \textbf{kernel of $\phi$} denoted by $\operatorname{ker}\phi$ is defined as: $$\operatorname{Im}\phi = \{x \in G\mid \phi(x) = e_B,\text{ the identity element of B}\}.$$
+\end{subsection_def}
+
+\begin{subsection_def}
+    Let $G$ and $G_1$ be two groups and $f: G \to G_1$ be a homomorphism of groups.%
+    \noindent
+    \begin{enumerate}[label = (\roman*), topsep=0pt]
+        \item $f$ is called a \textbf{monomorphism}, if $f$ is an injective function (one-one).
+        \item $f$ is called an \textbf{epimorphism}, if $f$ is a surjective function (onto).
+        
+    \end{enumerate}
+\end{subsection_def}
+
+\subsection{Isomorphisms}
+
+\begin{subsection_def}
+A homomorphism $f$ from a group $G$ to a group $G_1$ is called an \textbf{isomorphism} if the mapping $f \ :\ G \to G_1$ is a bijective mapping.
+\end{subsection_def}
+\vspace{0.1cm}
+\begin{subsection_example}
+    Let $G=(\mathbb{R}, +)$ and $H=(\mathbb{R}^+,\cdot )$.
+
+    Define $f\ :\ \mathbb{R} \to \mathbb{R}^+$ by $f(n) = e^n \ \forall \ n \in \mathbb{R}.$
+
+    Here $f$ is an isomorphism from $G$ to $H$.
+\end{subsection_example}
+\vspace{0.1cm}
+\begin{subsection_def}
+An \textbf{automorphism} of G is a group isomorphism from $G$ to itself.
+\end{subsection_def}
+
+\vspace{0.1cm}
+\begin{subsection_example}
+    Let $G=(\mathbb{C}, +)$.
+
+    Define $f\ :\ \mathbb{G} \to \mathbb{G}$ by $f(a+bi) = a-bi.$
+
+    Here $f$ is an automorphism from $G$ to $G$.
+\end{subsection_example}
+
+\subsection{Exercises Solved}
+
+\exercise{
+    Show that there does not exist any isomorphism from the group $(\mathbb{R}, +)$ to the group $(\mathbb{R}^*, \cdot)$.
+}
+\solution{
+    Observe that $0$ is the identity element of the group $(\mathbb{R}, +)$. Hence. no nonzero element of $\mathbb{R}$ is of finite order. 
+    
+    Now for the group $(\mathbb{R^*}, \cdot)$, $1$ is the identity element and $-1$ is an element of order $2$. 
+    
+    So, if there exists an isomorphism $f \ : \ \mathbb{R} \to \mathbb{R^*}$, there should exist $a \in \mathbb{R}$ such that $o(a) =2$. But this is not the case. 
+    
+    Hence, there is no ismomorphism from the group $(\mathbb{R},+)$ to the group $(\mathbb{R^*}, \cdot)$.
+}
+
+\exercise{
+    Let $G, H \text{ and } K$ be three groups. If $G\simeq H$ and $H \simeq K$, then prove that $G \simeq K$.
+}
+\solution{
+Since \( G \simeq H \), there exists an isomorphism \( f: G \to H \), and since \( H \simeq K \), there exists an isomorphism \( g: H \to K \).
+
+Define a map \( \varphi: G \to K \) by \( \varphi = g \circ f \), i.e.,
+\[
+\varphi(x) = g(f(x)) \quad \text{for all } x \in G.
+\]
+
+We will show that \( \varphi \) is an isomorphism from \( G \) to \( K \).
+
+\begin{itemize}
+    \item \textbf{Homomorphism:} Since both \( f \) and \( g \) are homomorphisms, for all \( x, y \in G \),
+    \[
+    \varphi(xy) = g(f(xy)) = g(f(x)f(y)) = g(f(x))g(f(y)) = \varphi(x)\varphi(y).
+    \]
+    Hence, \( \varphi \) is a homomorphism.
+
+    \item \textbf{Injective:} Since \( f \) and \( g \) are injective, suppose \( \varphi(x_1) = \varphi(x_2) \). Then:
+    \[
+    g(f(x_1)) = g(f(x_2)) \Rightarrow f(x_1) = f(x_2) \Rightarrow x_1 = x_2.
+    \]
+    So \( \varphi \) is injective.
+
+    \item \textbf{Surjective:} Let \( z \in K \). Since \( g \) is surjective, there exists \( y \in H \) such that \( g(y) = z \). Since \( f \) is surjective, there exists \( x \in G \) such that \( f(x) = y \). Then:
+    \[
+    \varphi(x) = g(f(x)) = g(y) = z.
+    \]
+    Hence, \( \varphi \) is surjective.
+\end{itemize}
+
+Since \( \varphi \) is a bijective homomorphism, it is an isomorphism. Therefore, \( G \simeq K \).
+}
+
+\subsection{Computational Work}
+
+\begin{enumerate}
+    \item This program computes the order of $\operatorname{Aut}(D_n)$.
+
+    \subsubsection*{How it works}
+    This program takes an integer $n$ as input for the size of $D_n$ group.
+
+    Now, it calculates the order of $\operatorname{Aut}(D_n)$ using a mathematical formula:
+    $$|\operatorname{Aut}(D_n)| = n\cdot \phi(n)$$ where $\phi(n)$ is Euler’s totient function (the number of integers between 1 and $n$ that are coprime to $n$).
+    \addlink{https://github.com/shivam-raj12/Internship-Final-Report/blob/master/isomorphism.py}
+\end{enumerate}

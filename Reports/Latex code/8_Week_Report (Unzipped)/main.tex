@@ -1,0 +1,760 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage{graphicx}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{amsmath, amssymb, amsthm, float, array, tabularx}
+\usepackage[colorlinks=true, linkcolor=black, urlcolor=blue]{hyperref}
+\usepackage{enumitem, pifont}
+\usepackage[none]{hyphenat}
+
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem*{example*}{Example}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{example}{Example}[section]
+
+\newcounter{exercise}[section]
+\newcommand{\exercise}[1]{%
+  \refstepcounter{exercise}%
+  \noindent\textbf{\ding{117} Exercise \theexercise.}~#1
+  \par
+}
+
+\newcommand{\solution}[1]{%
+  \noindent\textbf{Solution:}~#1
+}
+
+\newcommand{\addlink}[1]{
+    \begin{center}
+    The code for this program is available \href{#1}{here}\footnote{\url{#1}}.
+    \end{center}
+}
+\setlength{\parskip}{1em}
+
+\begin{document}
+
+% -----------------------------------------------------------
+% Cover Page
+% -----------------------------------------------------------
+
+\begin{titlepage}
+\begin{center}
+\huge    
+\textbf{Summer Research Fellowship Programme, 2025} \\
+\vspace{2cm}
+Abstract Algebra\\
+
+\vspace{1cm}
+
+\Large
+Final Report
+
+\vspace{2cm}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.3\textwidth]{iaslogo_1.jpg}\hspace{0.03\textwidth}
+    \includegraphics[width=0.3\textwidth]{redlogo_1.png}\hspace{0.03\textwidth}
+    \includegraphics[width=0.3\textwidth]{blacklogo.jpg}
+\end{figure}
+\end{center}
+\vspace{1.5cm}
+\begin{tabbing}
+Student \hspace{4cm} \= Teacher \hspace{4cm} \= \kill
+\textbf{Student:} \> \> \textbf{Guide:} \\
+Shivam Raj \> \> Krishna Hanumanthu \\
+Department of Mathematics \> \> Department of Mathematics \\
+Thakur Prasad College, Madhepura(Bihar) \> \> CMI, Chennai
+\end{tabbing}
+\vspace{0.5cm}
+\textbf{Internship Duration:} 10 May 2025 -- 10 July 2025
+
+\vspace*{\fill}
+\noindent
+\begin{tabularx}{\textwidth}{X X}
+\begin{flushright}
+\rule{6cm}{0.4pt} \\ % Signature line
+Krishna Hanumanthu (Guide)
+\end{flushright}
+\end{tabularx}
+\end{titlepage}
+\include{abstract}
+\tableofcontents
+\newpage
+% -----------------------------------------------------------
+% Main Content
+% -----------------------------------------------------------
+\section{Groups}
+\begin{definition}
+    A \textbf{Group} is a non-empty set G together with binary operation * that satisfies the following properties:
+    \begin{enumerate}
+        \item \textbf{Closure:} $\forall \ a, b \in G$ such that $a*b \in G$.
+        \item \textbf{Associative:} $\forall \ a,b,c \in G$ such that $a*(b*c) = (a*b)*c$.
+        \item \textbf{Identity element:} $\exists$ a unique element $e \in G$ such that $a*e=e*a = a$.
+        \item \textbf{Inverse element:} $\forall \ a \in G,\ \exists$ a unique element $a^{-1} \in G$ such that $a*a^{-1} = a^{-1}*a = e$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}
+    An \textbf{Abelian Group} is a group which also satisfies the Distributive law property, that is,  $\forall a,b \in G\ \text{such that}\ a*b = b*a.$
+\end{definition}
+
+\vspace{0.1cm}
+
+\begin{example}
+    $(\mathbb{Z}, +), (\mathbb{Q}, +), (\mathbb{R}, +), (\mathbb{C}, +)$ are all examples of the Abelian Group.
+    
+    Similarly, $(\mathbb{Z^*}, \cdot), (\mathbb{Q^*}, \cdot), (\mathbb{R^*}, \cdot), (\mathbb{C^*}, \cdot)$ are also examples of the Abelian Group.
+\end{example}
+
+\begin{theorem}
+    There is only a unique identity element in any group.
+    \begin{proof}
+        If possible, assume that there exist two identity elements $e_1$ and $e_2$ in a group.
+
+        By the definition of identity:
+        \begin{itemize}
+            \item Since $e_1$ is an identity, it must hold that:
+            $$e_1*e_2=e_2 \quad \text{(because $e_1$ acts as identity on $e_2)$}$$
+            \item Since $e_2$ is an identity, it must hold that:
+            $$e_1*e_2=e_1 \quad \text{(because $e_2$ acts as identity on $e_1)$}$$
+\end{itemize}
+
+    Now we compare:
+    \begin{align}
+        e_1*e_2=e_2 \\
+        e_1*e_2=e_1
+    \end{align}
+
+    From $eq^n$ (1) and (2), we get: $$e_1=e_2$$
+
+    Thus, the identity element in any group is unique.
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}
+    $\forall a \in G, \exists$ a unique $b \in G$ such that $a*b = b*a = e$.
+    \begin{proof}
+        If possible, assume that there exist two inverses $b$ and $c$ such that
+        \begin{align}
+            a*b = b*a = e \\
+            a*c = c*a = e
+        \end{align}
+        
+    We will show $b=c$
+
+    Now, \begin{align*}
+        b &= b*e \\
+        &= b * (a*c) \quad \text{[from $eq^n\ 4$ ]}\\
+        &= (b*a)*c \quad \text{[Associative law]}\\
+        &= e*c \quad \quad \quad  \text{[from $eq^n \ 3$]}\\
+        &= c
+    \end{align*}.
+
+    Thus, inverse of an element is unique.
+    \end{proof}
+\end{theorem}
+
+\subsection{Exercises Solved}
+Some of the exercises which I solved from the \textit{Contemporary Abstract Algebra} by Joseph A. Gallian book are:
+
+\exercise{Prove that in a group, $(a^{-1})^{-1} = a$ for all a.}
+
+\solution{
+    Let $b = (a^{-1})^{-1}$.
+
+    We want to show that $b=a$.
+
+    By the definition of an inverse: $$a^{-1} \cdot b=e.$$
+
+    But we also know that: $$a\cdot a^{-1} = e.$$
+
+    So, $a$ is the inverse of $a^{-1}$, which means: $$a=(a^{-1})^{-1}.$$
+
+    Therefore, $$b=a=(a^{-1})^{-1}.$$
+
+    Hence, $$a=(a^{-1})^{-1}.$$
+}
+
+\exercise{Prove that a group G is Abelian if and only if $(ab)^{-1} = a^{-1}b^{-1}$ for all $a$ and $b$ in G. }
+
+\solution{ We have to prove two things:
+    \begin{enumerate}
+        \item $G$ is abelian $\implies$ $(ab)^{-1} = a^{-1}b^{-1}$
+        \item $(ab)^{-1} = a^{-1}b^{-1}$ $\implies G$ is Abelian group.
+    \end{enumerate}
+
+    \textit{Proof (i)} We know that $$(ab)^{-1} = b^{-1} a^{-1}$$
+
+                        and since G is Abelian, we also have $$b^{-1}a^{-1}=a^{-1}b^{-1}$$ 
+
+                        Combining, both the equation we have:
+                        $$(ab)^{-1} = a^{-1}b^{-1}$$
+
+    \textit{(ii)} We have 
+                    \begin{align*}
+                        (ab)^{-1} &= a^{-1}b^{-1} \\
+                        \Rightarrow b^{-1}a^{-1} &= a^{-1}b^{-1} \\
+                        \Rightarrow (b^{-1}a^{-1})^{-1} &= (a^{-1}b^{-1})^{-1} \quad \text{[Taking inverse both side]} \\
+                        \Rightarrow ab &= ba
+                    \end{align*}
+                    
+                    Therefore, $G$ is abelian.
+
+                    Hence, we have $G$ is abelian $\iff$ $(ab)^{-1} = a^{-1}b^{-1} \ \forall \ a, b \in G$.
+}
+
+\subsection{Computational Work}
+Some of the computer exercises which I developed to help us in the study of groups are:
+
+\begin{enumerate}
+    \item This program prints the order of the $U(n) = \{a \in \mathbb{Z}_n \mid gcd(a, n) = 1\}$ group.
+
+    \subsubsection*{How it works}
+    This program uses a mathematical formula to calculate the order of the $U(n)$ group.
+
+    For example, let's say the prime factorization of $n=p_1^{a_1}\cdot p_2^{a_2} \cdots p_k^{a_k}$.
+
+    We have, $$\mid U(n) \mid = n \times \left ( 1-\frac{1}{p_1} \right ) \times \left ( 1-\frac{1}{p_2} \right ) \times \cdots \times \left ( 1-\frac{1}{p_k} \right )$$
+
+    The program takes an integer $n$ as input and calculates the prime divisors of $n$ (in this case it is $p_1, p_2, \cdots, p_k$). Then it multiplies $n$ by $\left (1-\dfrac{1}{p_x} \right) \text{ where } x \in \{p_1, p_2, \cdots , p_k\}$
+
+    \begin{center}
+            \addlink{https://github.com/shivam-raj12/Internship-Final-Report/blob/master/U_n_Group/U(n)_Size.py}
+    \end{center}
+
+    \item \label{point: 2}This program prints the elements of the $U(n)$ group.
+    \subsubsection*{How it works}
+    The program takes an integer $n$ as input and iterates through all integers $a$ from $1$ to $(n-1)$. For each $a$, it calculates the greatest common divisor of $a$ and $n$ using the built-in GCD function. If $gcd(a, n)=1$, the number is added to the list of elements of $U(n)$.
+    \addlink{https://github.com/shivam-raj12/Internship-Final-Report/blob/master/U_n_Group/U_n_Elements.py}
+
+    \item \label{point: 3}This program prints the Cayley table for the $U(n)$ group.
+    \subsubsection*{How it works}
+    This program uses the external Python library \texttt{tabulate} to print the Cayley table in a well-formatted tabular structure. 
+
+    The program takes an integer $n$ as input and stores all the elements of the $U(n)$ group from the function defined in \hyperref[point: 2]{\underline{Point 2}}.
+
+    Now, the program uses two nested \texttt{for} loops to iterate through all elements of the group. The outer loop selects each element $a$ from the group elements list, and the inner loop iterates over each element $b$, computing the group operation $a*b$ for every pair. The result of each operation is stored in a structured format, which is later printed as a table using the \texttt{tabulate} library.
+
+    \addlink{https://github.com/shivam-raj12/Internship-Final-Report/blob/master/U_n_Group/Cayley_Table.py}
+    \item This program prints the Cayley table for the $\mathbb{Z}_n=\{a \in \mathbb{Z} \mid 0 \leq a < n \}$ group.
+    \subsubsection*{How it works}
+    This program uses the same working principle as the Cayley table program for the $U(n)$ group \hyperref[point: 3]{\underline{(Point 3)}}. The only difference is that this program uses $\mathbb{Z}_n$ group elements instead of $U(n)$ group.
+    \addlink{https://github.com/shivam-raj12/Internship-Final-Report/blob/master/Z_n_Group/Cayley_table.py}
+\end{enumerate}
+
+
+
+
+
+%---------------------------------------------------------------
+%--------------------------Subgroups----------------------------
+%---------------------------------------------------------------
+\section{Subgroups}
+\begin{definition}
+    A subset $H$ of a group $G$ is called a \textbf{subgroup} of $G$ if $H$ is itself a group under the same operation as $G$.
+\end{definition}
+
+\begin{definition}
+    The \textbf{order of an element} $a \in G$ is the smallest positive integer $n$ such that $a^n = e$, where $e$ is the identity element of the group G.
+\end{definition}
+\vspace{0.1cm}
+
+
+\begin{example}
+    $(\mathbb{Z}, +) \leq (\mathbb{Q}, +)\leq (\mathbb{R,+) \leq (\mathbb{C}, +)}$ are all examples of a subgroup.
+\end{example}
+
+\vspace{0.1cm}
+
+\begin{theorem}
+    Let $G$ be a group and $H$ be a non-empty subset of $G$. Then $H$ is a subgroup of $G$ if and only if for all $a,b \in H, ab^{-1} \in H.$
+
+    \begin{proof}
+        \textbf{(\(\Rightarrow\))} Assume \( H \leq G \), i.e., \( H \) is a subgroup of \( G \). Let \( a, b \in H \). Since \( H \) is a subgroup, it is closed under taking inverses and the group operation. Thus:
+\[
+b^{-1} \in H \quad \text{and} \quad ab^{-1} \in H
+\]
+because both \( a \) and \( b^{-1} \) are in \( H \), and \( H \) is closed under multiplication. Hence, \( ab^{-1} \in H \).
+
+\textbf{(\(\Leftarrow\))} Assume \( H \) is a non-empty subset of \( G \), and for all \( a, b \in H \), we have \( ab^{-1} \in H \). We want to show that \( H \) is a subgroup of \( G \).
+
+Since \( H \) is non-empty, there exists some \( h \in H \).
+
+\begin{itemize}
+    \item \textbf{Identity:} Let \( a = b \in H \). Then
+    \[
+    ab^{-1} = aa^{-1} = e \in H
+    \]
+    so the identity element \( e \) is in \( H \).
+
+    \item \textbf{Inverses:} Let \( a \in H \), and use \( e \in H \) (shown above). Then
+    \[
+    ea^{-1} = a^{-1} \in H
+    \]
+    so \( H \) contains inverses.
+
+    \item \textbf{Closure:} Let \( a, b \in H \). Then \( b^{-1} \in H \) (since \( H \) contains inverses), so:
+    \[
+    ab = a(b^{-1})^{-1} \in H
+    \]
+    since \( a \in H \), \( b^{-1} \in H \), and \( ab = a(b^{-1})^{-1} \in H \) by assumption.
+\end{itemize}
+
+Therefore, \( H \) is a subgroup of \( G \).
+
+    \end{proof}
+\end{theorem}
+
+\subsection{Exercises Solved}
+
+\exercise{Let $G$ be a group, and let $a \in G$. Prove that $C(a) = C(a^{-1})$.}
+\solution{ We will show that \( C(a) \subseteq C(a^{-1}) \) and \( C(a^{-1}) \subseteq C(a) \), which implies \( C(a) = C(a^{-1}) \).
+
+\textbf{(1) Show that \( C(a) \subseteq C(a^{-1}) \):}
+
+Let \( g \in C(a) \). Then \( ga = ag \).
+
+We want to show that \( g \in C(a^{-1}) \), i.e., \( ga^{-1} = a^{-1}g \).
+
+Starting from \( ga = ag \), multiply both sides on the right by \( a^{-1} \):
+\[
+gaa^{-1} = aga^{-1} \Rightarrow g = aga^{-1}
+\]
+Now multiply both sides on the left by \( a^{-1} \):
+\[
+a^{-1}g = a^{-1}(aga^{-1}) = (a^{-1}a)g a^{-1} = g a^{-1}
+\]
+Thus, \( a^{-1}g = ga^{-1} \), so \( g \in C(a^{-1}) \). 
+
+Hence, \( C(a) \subseteq C(a^{-1}) \).
+
+\textbf{(2) Show that \( C(a^{-1}) \subseteq C(a) \):}
+
+Let \( g \in C(a^{-1}) \). Then \( ga^{-1} = a^{-1}g \).
+
+We want to show that \( ga = ag \).
+
+Multiply both sides of \( ga^{-1} = a^{-1}g \) on the right by \( a \):
+\[
+ga^{-1}a = a^{-1}g a \Rightarrow g = a^{-1}ga
+\]
+Multiply both sides on the left by \( a \):
+\[
+ag = a(a^{-1}ga) = (aa^{-1})ga = ga
+\]
+So \( ag = ga \), i.e., \( g \in C(a) \). Hence, \( C(a^{-1}) \subseteq C(a) \).
+
+\textbf{Conclusion:} Since both inclusions hold, we conclude that
+\[
+C(a) = C(a^{-1}).
+\]
+}
+\subsection{Computational Work}
+\begin{enumerate}
+    \item \label{point: 1}This program prints the inverse and order of each element of the $U(n)$ group.
+
+    \subsubsection*{How it works}
+    This program uses an external library \texttt{tabulate} to print the inverse and order of each element in a tabular structure.
+
+    The program takes an integer $n$ as input and stores all the elements of the $U(n)$ group from the function defined in \hyperref[point: 2]{\underline{Section 1; Point 2}}. These elements form a group under multiplication modulo $n$.
+
+    Next, the program uses two nested \texttt{for} loops to find the multiplicative inverse of each element in $U(n)$.
+    \begin{itemize}
+        \item The outer loop selects each element $a$ from the list of group elements.
+        \item The inner loop iterates over each element $b$ in the group and computes ${(a\cdot b) \bmod n}$.
+        \item If the result is 1, then $b$ is the multiplicative inverse of $a$. The inverse $b$ is stored, and the inner loop is ended using break.
+    \end{itemize}
+    Then the program determines the order of each element in the group.
+    \begin{itemize}
+        \item For each element $a$, another loop iterates over $i$ from $1$ to $n$ (order of an element is always less than or equal to order of the group), computing $a^i \bmod n$.
+        \item When the result is $1$, $i$ is the order of $a$ in the group. The order is stored and the loop breaks.
+    \end{itemize}
+    
+    After processing all elements, the program prints the results in table format using the \texttt{tabulate} library, showing each element along with its inverse and order.
+    
+    \addlink{https://github.com/shivam-raj12/Internship-Final-Report/blob/master/U_n_Group/Inverse_and_Order.py}
+
+    \item This program prints the inverse and order of each element of the $\mathbb{Z}_n$ group.
+    \subsubsection*{How it works}
+    Working of this program is same as discussed in \hyperref[point: 1]{\underline{Point 1}}.
+
+    \addlink{https://github.com/shivam-raj12/Internship-Final-Report/blob/master/Z_n_Group/Inverse_and_Order.py}
+    
+    \item This program prints the order of the $GL(2, \mathbb{Z}_p)$ group where $p$ is prime.
+    \subsubsection*{How it works}
+
+    This program takes an integer $p$ as input and calculates the order of the $GL(2, \mathbb{Z}_p)$ group using a mathematical formula.
+    $$\left | GL(2, \mathbb{Z}_P)  \right | = \left ( p^2 -1)(p^2-p \right ) \text{ where } p \text{ is prime}.$$
+    \addlink{https://github.com/shivam-raj12/Internship-Final-Report/blob/master/Matrix/order_of_group.py}
+
+    \item This program prints the inverse of an element of $ GL(2, \mathbb{Z}_p)$ group.
+
+    \subsubsection*{How it works}
+    This program takes $5$ integer value as input $a, b,c,d,p$ where $a,b,c,d$ represents the element of matrix in the below format:
+    $$\begin{bmatrix}
+a & b \\
+c & d
+\end{bmatrix}$$ and p (must be prime) represent the value of $\mathbb{Z}_p$.
+
+        Now, the inverse is calculated using the formula:
+        $$A^{-1} = (det A)^{-1} \times \begin{bmatrix}
+            a & b\\ c & d
+        \end{bmatrix} \bmod p$$ where $A = \begin{bmatrix}
+            a&b\\c&d
+        \end{bmatrix}$ and $(det A)^{-1}$ is the modular inverse of the determinant in $\mathbb{Z}_p$.
+
+        \addlink{https://github.com/shivam-raj12/Internship-Final-Report/blob/master/Matrix/inverse_of_element.py}
+
+    \item This program prints the order of an element of $GL(2,\mathbb{Z}_p)$ group.
+    \subsubsection*{How it works}
+
+    This program takes $5$ integer value as input $a, b,c,d,p$ where $a,b,c,d$ represents the element of matrix in the below format:
+    $$\begin{bmatrix}
+a & b \\
+c & d
+\end{bmatrix}$$ and p (must be prime) represent the value of $\mathbb{Z}_p$.
+    
+    The program uses the fact that the order of an element in a group must divide the order of the group. Therefore, it starts a \texttt{for} loop from \( 1 \) to \( |\mathrm{GL}(2, \mathbb{Z}_p)| \), which is the total number of invertible \( 2 \times 2 \) matrices over \( \mathbb{Z}_p \). The group order is given by:
+    \[
+    |\mathrm{GL}(2, \mathbb{Z}_p)| = (p^2 - 1)(p^2 - p).
+    \]
+    In each iteration, the matrix is multiplied by itself (modulo \( p \)) until the identity matrix is reached. The smallest such exponent \( n \) is the order of the matrix.
+    
+    If no such \( n \) is found within the group order, the program concludes that the matrix is not in \( \mathrm{GL}(2, \mathbb{Z}_p) \), i.e., it is not invertible modulo \( p \).
+
+    \addlink{https://github.com/shivam-raj12/Internship-Final-Report/blob/master/Matrix/order_of_element.py}
+
+\end{enumerate}
+
+
+%------------------------------------------------------------------
+%------------------Cyclic Group----------------------------------
+%---------------------------------------------------------------------
+
+
+\section{Cyclic Groups}
+\begin{definition}
+    A group G is called \textbf{cyclic} if $\exists$ an element $g \in G$ such that $$G = \{ g^n\ |\ n \in \mathbb{N} \}.$$
+\end{definition}
+\fbox{The element $g$ is called a generator of the group, and the group is said to be generated by $g$.}
+\begin{example}
+    $(\mathbb{Z}, +)$ is a cyclic group. Both $1$ and $-1$ are generators.
+\end{example}
+\vspace{0.1cm}
+\begin{theorem}
+    Prove that $(\mathbb{Q}, +)$ is not a cyclic group.
+    \begin{proof}
+        Suppose for contradiction that there is an element $q$ that generates $(\mathbb{Q}, +)$. Then $$\mathbb{Q} = \left <q \right > = \left \{ nq \mid n \in \mathbb{Z} \right \}$$
+        Let \( q = \dfrac{a}{b} \) in lowest terms, with \( a, b \in \mathbb{Z} \), \( b > 0 \), and \( \gcd(a, b) = 1 \). 
+        
+        Then every element in \( \langle q \rangle \) has the form \( \dfrac{na}{b} \), and hence all elements have denominator dividing \( b \).
+
+        However, the rational number \( \dfrac{1}{b+1} \in \mathbb{Q} \) cannot be written as \( \dfrac{na}{b} \), since its denominator \( b+1 \) does not divide \( b \). 
+        
+        Thus, \( \dfrac{1}{b+1} \notin \langle q \rangle \), contradicting the assumption that \( \langle q \rangle = \mathbb{Q} \).
+        
+        Therefore, \((\mathbb{Q}, +)\) is not a cyclic group.
+
+    \end{proof}
+
+\end{theorem}   
+\subsection{Exercises Solved}
+\exercise{Prove that a group of order 3 must be cyclic.}
+\solution{
+    By Lagrange's Theorem, the order of any element $g \in G$ must divide the order of the group. Therefore, the possible orders of elements in $G$ are the divisors of 3, i.e., 1 or 3.
+    
+    Let $e$ denote the identity element in $G$. Clearly, $e$ has order 1.
+    
+    Now consider any element $g \in G$ such that $g \neq e$. Since $g \in G$ and $g \neq e$, and $|G| = 3$, there are only two non-identity elements in $G$.
+    
+    The order of $g$ must divide 3, and it cannot be 1 (since $g \neq e$), so the order of $g$ must be 3.
+    
+    Therefore, the subgroup generated by $g$ is:
+    \[
+    \langle g \rangle = \{ e, g, g^2 \},
+    \]
+    which contains all three elements of $G$. So,
+    \[
+    \langle g \rangle = G,
+    \]
+    which shows that $G$ is generated by a single element.
+    
+    Hence, $G$ is cyclic.
+}
+
+\subsection{Computational Work}
+\begin{enumerate}
+    \item \label{sec 3: point 1}This program prints the cyclic subgroups generated by each element of the $U(n)$ group. 
+
+    \subsubsection*{How it works}
+    This program uses an external library \texttt{tabulate} to print the subgroups generated by each element in a well-structured table format.
+    
+    This program takes an integer value $n$ as input for the $U(n)$ group and obtains a list of all the elements of the $U(n)$ group. 
+
+    Now, it starts iterating for $x$ through all the elements of the $U(n)$ group.
+    Inside this loop, the program starts another loop $i$ from $0$ to $|U(n)|$ and calculates $x^i \bmod n$ and stores its value in a structured way.
+
+    When it completes the iteration for all elements in $U(n)$, the program prints all the generated cyclic subgroups from each element using the library \texttt{tabulate}.
+    \addlink{https://github.com/shivam-raj12/Internship-Final-Report/blob/master/U_n_Group/Cyclic_Subgroups.py}
+
+    \item This program prints the cyclic subgroups generated by each element of the $\mathbb{Z}_n$ group. 
+    \subsubsection*{How it works}
+    The working principle of this program is same as the program for the cyclic subgroups generated by each element of the $U(n)$ group. \hyperref[sec 3: point 1]{\underline{(Point 1)}}
+    \addlink{https://github.com/shivam-raj12/Internship-Final-Report/blob/master/Z_n_Group/Cyclic_subgroup.py}
+\end{enumerate}
+
+\section{Permutation Groups}
+\begin{definition}
+    A \textbf{permutation group} on a set $S$ is a group consisting of bijective functions (called permutations) from $S$ to itself, with the group operation being composition of functions.
+\end{definition}
+
+\begin{example}
+    Let $S=\{ 1, 2 ,3 \}$. The set of all permutations of $S$ forms a group under composition, called the symmetric group on $3$ elements, denoted by $S_3$.
+
+    The group $S_3$ has 6 elements:
+    $$S_3  = \{ e, (1\ 2), (2\ 3), (1\ 3), (1\ 2\ 3), (1\ 3\ 2) \}$$
+\end{example}
+
+\begin{definition}
+    The \textbf{alternating group} \( A_n \) is the group of all \textit{even permutations} of \( n \) elements, i.e., permutations that can be written as a product of an even number of transpositions. 
+    
+    It is a subgroup of the symmetric group \( S_n \) with order \( \dfrac{n!}{2} \).
+\end{definition}
+
+\begin{example}
+    $A_3 = \{ e, (1\ 2\ 3), (1\ 3\ 2) \}$
+\end{example}
+
+\begin{definition}
+    \label{def:stabilizer}
+    Let $G$ be a group of permutations of a set $S$. For each $i$ in $S$, 
+    $$\operatorname{stab}_G(i) = \{ \phi \in G \mid \phi(i) = i \}.$$
+    We call $\operatorname{stab}_G(i)$ the \textbf{stabilizer of $i$ in $G$}.
+\end{definition}
+
+\subsection{Exercises Solved}
+\exercise{
+    If $\alpha$ is even, prove that $\alpha^{-1}$ is even. If $\alpha$ is odd, prove that $\alpha^{-1}$ is odd.
+}
+\solution{
+    Let $\alpha \in S_n$ be a permutation.
+    
+    A permutation is \textbf{even} if it can be expressed as a product of an even number of transpositions, and \textbf{odd} otherwise. The sign function $\operatorname{sgn}: S_n \to \{-1, 1\}$ satisfies:
+    \[
+    \operatorname{sgn}(\alpha \beta) = \operatorname{sgn}(\alpha)\operatorname{sgn}(\beta)
+    \]
+    Since $\alpha \alpha^{-1} = e$, we have:
+    \[
+    \operatorname{sgn}(\alpha \alpha^{-1}) = \operatorname{sgn}(\alpha)\operatorname{sgn}(\alpha^{-1}) = \operatorname{sgn}(e) = 1
+    \]
+    \[
+    \Rightarrow \operatorname{sgn}(\alpha^{-1}) = \operatorname{sgn}(\alpha)
+    \]
+    \textbf{Conclusion:} The inverse of an even permutation is even and the inverse of an odd permutation is odd.}
+
+\exercise{
+    Prove that $S_n$ is non-Abelian for all $n \geq 3$.
+}
+\solution{
+    Consider \( n \geq 3 \). Define the following permutations in \( S_n \):
+    \[
+    \alpha = (1\ 2), \quad \beta = (2\ 3)
+    \]
+    Compute the compositions:
+    \[
+    \alpha \beta = (1\ 2)(2\ 3) = (1\ 2\ 3), \quad \beta \alpha = (2\ 3)(1\ 2) = (1\ 3\ 2)
+    \]
+    Since \( \alpha \beta \neq \beta \alpha \), we conclude that composition in \( S_n \) is not commutative.
+    
+    Therefore, \( S_n \) is non-abelian for all \( n \geq 3 \).
+}
+
+\subsection{Computational Work}
+\begin{enumerate}
+    \item This program prints the stabilizer of a point in a permutation group acting on a set $S$. \hyperref[def:stabilizer]{\underline{(See definition 4.3)}}
+
+    \subsubsection*{How it works}
+    This program first takes two inputs: \begin{itemize}
+        \item An integer $n$, which defines the Symmetric group $S_n$.
+        \item An element of the set $\{ 1,2,3,\cdots,n \}$ whose stabilizer is to be computed.
+    \end{itemize}
+
+    This program uses \texttt{SymmetricGroup} from the \texttt{sympy} library and its \texttt{stabilizer} method to find all permutations that fix that element. The stabilizer elements are generated with \texttt{generate\_dimino()} and printed in cycle notation.
+    \addlink{https://github.com/shivam-raj12/Internship-Final-Report/blob/master/Permutation/stabilizer.py}
+
+    \item This program prints the number of elements in each cycle of a symmetric group.
+    \subsubsection*{How it works}
+    This program takes a positive integer input representing the size of the set for the symmetric group.
+    
+    Now, the program calls a function that I defined to generate a list of all possible cycles in the symmetric group \( S_n \). It iterates through each cycle and calls another function that I wrote to determine how many elements are in each cycle. After processing all cycles, the results are displayed in a neatly formatted table using the \texttt{tabulate} library.
+    \addlink{https://github.com/shivam-raj12/Internship-Final-Report/blob/master/Permutation/cycle_elements.py}
+
+\end{enumerate}
+
+\input{Homomorphism}
+
+
+%----------------------------------------------------------------------
+%----------------------Cosets and Lagrange's Theorem-------------------
+%----------------------------------------------------------------------
+\section{Cosets and Lagrange's Theorem}
+\begin{definition}
+    Let $H$ be a subgroup of a group $G$. If $a \in G$, the subset $$aH=\{ah\mid h \in H\}$$ is called a \textbf{left coset} of $H$ in $G$. Similarly, $$Ha=\{ha \mid h \in H\}$$ is called a \textbf{right coset} of $H$ in $G$.
+\end{definition}
+\vspace{0.1cm}
+\begin{example}
+    Let $G = (\mathbb{Z}, +)$ and $H =5\mathbb{Z}=\{5n \mid n\in \mathbb{Z\}}$.
+
+    The left cosets of $H=5\mathbb{Z} \text{ in } \mathbb{Z} $ are 
+    $$0+5\mathbb{Z}, 1+5\mathbb{Z}, 2+5\mathbb{Z}, 3+5\mathbb{Z}, 4+5\mathbb{Z}\text{.}$$
+\end{example}
+\vspace{0.1cm}
+\begin{theorem}
+    Let $H$ be a subgroup of a group $G$. If $a \in G$, then $|aH| = |H| = |Ha|$.
+
+    \begin{proof}
+        To show that $| H| = |aH |$, we show that there exists a bijective mapping of $H$ onto $aH$. 
+        
+        Consider the function \( f: H \to aH \) given by \( f(h) = ah \).
+
+        \begin{itemize}
+          \item \textbf{Injective:} Suppose \( f(h_1) = f(h_2) \). Then \( ah_1 = ah_2 \Rightarrow h_1 = h_2 \), since left multiplication by \( a \) is a bijection in a group.
+          \item \textbf{Surjective:} For any element \( ah \in aH \), there exists \( h \in H \) such that \( f(h) = ah \).
+        \end{itemize}
+        
+        Hence, \( f \) is a bijection and, therefore, \( |aH| = |H| \).
+        
+        Similarly, define \( g: H \to Ha \) by \( g(h) = ha \). A similar argument shows that \( g \) is also a bijection, so \( |Ha| = |H| \).
+        
+        Thus,
+        \[
+        |aH| = |H| = |Ha|.
+        \]
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}[Lagrange’s Theorem]
+    If $G$ is a finite group and $H$ is a subgroup of $G$, then $|H| \text{ divides } |G|$. Moreover, $$|G| = [G:H]|H|$$
+    \begin{proof}
+        Since $G$ is a finite group, $[G:H]$ is finite.
+
+        Let $[G:H]=r$.
+
+        This implies that there exist $r$ distinct left cosets $a_1H, a_2H, \cdots , a_rH$ of $H$ in $G$.
+        
+        Since distinct left cosets are mutually disjoint, we have
+        \begin{align*}
+            |G| &= \left | \bigcup_{i=1}^{r} a_iH \right | = | a_1H | + | a_2H | + \cdots + | a_rH | \\[1.5ex]
+            &= \underbrace{|H| +|H|+ \cdots + |H|}_{\textstyle r \text{ times}} \quad \text{ [by Theorem 6.1, }|a_iH|=|H|] \\[1.5ex]
+            &= r|H| = [G:H]|H|.
+        \end{align*}
+        
+        Hence the theorem.
+    \end{proof}
+\end{theorem}
+\begin{theorem}[Fermat's Little Theorem]
+    Let $p$ be a prime integer and $a$ be an integer such that $p$ does not divide $a$. Then $a^{p-1} \equiv 1(\bmod p)$.
+    \begin{proof}
+        For the prime integer $p$, $U_p=\{[a] \in \mathbb{Z}_p \mid gcd(a,p)=1\}$. Then $U_p = \mathbb{Z}_p \setminus {[0]}$ is a group of order $p-1$. 
+        
+        Let $a$ be an integer such that $p$ does not divide $a$. Then $[a]$ is a nonzero element of $\mathbb{Z}_p$ and so $[a] \in U_p$. 
+        
+        Thus $[a]^{p-1} = [1]$, i.e., $[a^{p-1}] = [1]$.
+
+        Hence $a^{p-1} \equiv 1 ( \bmod p)$.
+    \end{proof}
+\end{theorem}
+
+\subsection{Exercises Solved}
+\exercise{
+    Every group of prime order is cyclic.
+}
+\solution{
+    Let $|G|=p$.
+
+    $\because p>1$, $G$ has an element $a \neq e$.
+    Let $H$ be a subgroup $\left < a \right > = \{ a^n \mid n \in \mathbb{Z}\}$. By Lagrange's theorem $|\left <a\right >|$ divides $p$.
+
+    Hence $|\left <a\right >| = 1 \text{ or } p$. Since $a\neq e, |\left <a\right >|\neq 1$ and so $|\left <a\right >| = p$. Now $|\left <a\right >| \subseteq G$ and $|\left <a\right >|=|G| = p$.
+
+    Hence, $G=\left <a\right >$. This shows that $G$ is a cyclic group. 
+}
+
+
+
+\section{External Direct Product}
+\begin{definition}
+    Let $(G, *)$ and $(H, \circ)$ be two groups. The \textbf{external direct product} of $G$ and $H$, denoted by $G \oplus H$, is the group consisting of all ordered pairs $(g, h)$ where $g \in G$ and $h \in H$, with the group operation define component-wise: $$(g_1,h_1)\cdot (g_2,h_2)=(g_1*g_2,h_1 \circ h_2)$$
+\end{definition}
+\begin{example}
+    $U(8) = \{ 1, 3, 5, 7\}$ and $U(10) = \{1, 3, 7,9\}$
+    \begin{align*}
+    \therefore U(8) \oplus U(10) = \{ (1,1),(1,3),(1,7),(1,9),\\(3,1),(3,3),(3,7),(3,9),\\(5,1),(5,3),(5,7),(5,9),\\(7,1),(7,3),(7,7),(7,9) \}
+    \end{align*}
+\end{example}
+\subsection{Exercises Solved}
+\exercise{
+    Show that the direct product $\mathbb{Z} \oplus \mathbb{Z}$ is not a cyclic group.
+}
+\solution{
+    Suppose $\mathbb{Z} \oplus \mathbb{Z}$ is a cyclic group. 
+    Let $(n,m)$ be a generator of $\mathbb{Z} \oplus \mathbb{Z}$. 
+    
+    We have $(1,0), (0,1) \in \mathbb{Z} \oplus \mathbb{Z}$. Thus, there are integers $r, s$ such that $(1,0)=r(n,m)$ and $(0,1)=s(n,m)$. But then $rn=1$ and $sn=0$, together imply that $s=0$ (as $n \neq 0$, since $rn =1$), which is a contradiction, since $sm=1$. 
+
+    So, it follows that $\mathbb{Z} \oplus \mathbb{Z}$ is not a cyclic group.
+}
+
+\exercise{
+    Let $H$ and $K$ be two finite groups. Prove that $o(a,b) = \operatorname{lcm}\left \{ o(a), o(b) \right \}$, where $(a,b) \in H \oplus K$.
+}
+\solution{
+Let \( o(a) = m \) and \( o(b) = n \), which means:
+\[
+a^m = e_H, \quad b^n = e_K.
+\]
+We define the order of the element \( (a, b) \) in \( H \oplus K \) as:
+\[
+o(a, b) = \min \left\{ k \in \mathbb{N} : (a, b)^k = (e_H, e_K) \right\}.
+\]
+Now observe that:
+\[
+(a, b)^k = (a^k, b^k).
+\]
+So:
+\[
+(a, b)^k = (e_H, e_K) \iff a^k = e_H \text{ and } b^k = e_K.
+\]
+This implies that \( k \) must be a common multiple of \( o(a) \) and \( o(b) \), and hence:
+\[
+o(a, b) = \operatorname{lcm}(o(a), o(b)).
+\]
+}
+
+\subsection{Computational Work}
+\begin{enumerate}
+    \item This program prints the elements of $U_s(st) = \{ x \in U(st) \mid x \equiv 1 (\bmod s) \}$, where $s$ and $t$ are relatively prime.
+    \subsubsection*{How it works}
+    This program takes two integer values \( s \) and \( t \) as input. The values \( s \) and \( t \) must be relatively prime.
+    
+    This program iterates from \( 1 \) to \( st \) and checks whether each number is co-prime to \( st \). If it is, then it further checks whether the number is congruent to \( 1 \bmod s \). If both conditions are satisfied, the element is printed.
+    \addlink{https://github.com/shivam-raj12/Internship-Final-Report/blob/master/external_product/program1.py}
+
+    \item This program computes the elements of the subgroup $U(n)^k = \{ x^k \mid x \in U(n) \}$.
+    \subsubsection*{How it works}
+    This program takes integers $n$ and $k$ as input, computes $x^k \mod n$ for all $x$ co-prime to $n$, and prints the distinct results. It also prints the order of the subgroup.
+    \addlink{https://github.com/shivam-raj12/Internship-Final-Report/blob/master/external_product/program2.py}
+
+    \item This program prints the Cayley table of the $\mathbb{Z}_m \oplus \mathbb{Z}_n$ group.
+    \subsubsection*{How it works}
+    This program takes two positive integers $m$ and $n$ as input for the $\mathbb{Z}_m \oplus \mathbb{Z}_n$ group.
+    Now, this program uses the same working principle as the program used to print the cayley table of the $U(n)$ group. \hyperref[point: 3]{\underline{(Section 1; Point 3)}}
+    \addlink{https://github.com/shivam-raj12/Internship-Final-Report/blob/master/external_product/cayley_table.py}
+    \item This program prints the order of all elements of the $\mathbb{Z}_m \oplus \mathbb{Z}_n$ group and also prints whether $\mathbb{Z}_m \oplus \mathbb{Z}_n$ is a cyclic group or not.
+    \subsubsection*{How it works}
+    This program takes two positive integers $m$ and $n$ as input for the $\mathbb{Z}_m \oplus \mathbb{Z}_n$ group.
+    Now, this program uses the same working principle as the program used to print the order of all elements of the $U(n)$ group. \hyperref[point: 1]{\underline{(Section 2; Point 1)}}. It also checks whether the order of an element is equal to the order of the group. If it is, the program prints that the group is cyclic; otherwise, it prints that the group is not cyclic.
+    \addlink{https://github.com/shivam-raj12/Internship-Final-Report/blob/master/external_product/order.py}
+\end{enumerate}
+
+\input{normal and factor}
+\end{document}
